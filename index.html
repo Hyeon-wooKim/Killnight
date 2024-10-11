@@ -69,7 +69,13 @@
 
         for (let i = 0; i < numberOfImages; i++) {
             const img = document.createElement('img');
-            img.src = 'https://1drv.ms/i/s!ApO_KMRs8HgThZlD-sDDsUwxoID_TA?embed=1&width=1200&height=1600';
+            
+            // 50% 확률로 두 가지 이미지를 선택
+            const randomChoice = Math.random() < 0.5 
+                ? 'https://1drv.ms/i/s!ApO_KMRs8HgThZlD-sDDsUwxoID_TA?embed=1&width=1200&height=1600'
+                : 'https://1drv.ms/i/s!ApO_KMRs8HgThbgDkwVUp7pZ-pVT5w?embed=1&width=692&height=774';
+
+            img.src = randomChoice;
             img.classList.add('falling-image');
             img.style.left = Math.random() * 100 + 'vw'; // 화면 랜덤 위치
             img.style.animationDuration = Math.random() * 5 + 5 + 's'; // 이미지 떨어지는 속도
