@@ -28,12 +28,13 @@
             height: auto; /* 가로 세로 비율 유지 */
         }
 
-        .snowflake {
+        .falling-text {
             position: fixed;
             top: 0;
             z-index: 9999;
             color: white;
-            font-size: 1em;
+            font-family: Arial, sans-serif;
+            font-size: 0.5em; /* 기본 폰트 크기 작게 설정 */
             pointer-events: none;
             animation: fall linear infinite;
         }
@@ -49,12 +50,12 @@
             }
         }
 
-        /* 다양한 크기의 눈송이를 위해 폰트 크기 조정 */
-        .snowflake:nth-child(odd) {
-            font-size: 2em;
+        /* 다양한 크기의 텍스트를 위해 폰트 크기 조정 */
+        .falling-text:nth-child(odd) {
+            font-size: 0.8em;
         }
-        .snowflake:nth-child(even) {
-            font-size: 1.5em;
+        .falling-text:nth-child(even) {
+            font-size: 0.6em;
         }
     </style>
 </head>
@@ -64,18 +65,18 @@
     <!-- 기존 이미지 -->
     <img src="https://1drv.ms/i/s!ApO_KMRs8HgThbJgic2QPG-i-cqDWQ?embed=1&width=1080&height=1080" alt="My Image">
 
-    <!-- Snowflake Effect -->
+    <!-- Falling Text Effect -->
     <script>
-        const snowflakes = '❄️'.repeat(100).split('');
+        const fallingTextArray = 'KILLNIGHT X EUROS'.repeat(50).split('');
         const body = document.body;
 
-        snowflakes.forEach((snowflake) => {
+        fallingTextArray.forEach(() => {
             const span = document.createElement('span');
-            span.innerHTML = snowflake;
-            span.classList.add('snowflake');
-            span.style.left = Math.random() * 100 + 'vw';
-            span.style.animationDuration = Math.random() * 5 + 5 + 's'; // 눈송이 떨어지는 속도
-            span.style.fontSize = Math.random() * 1.5 + 'em'; // 눈송이 크기
+            span.innerHTML = 'KILLNIGHT X EUROS';
+            span.classList.add('falling-text');
+            span.style.left = Math.random() * 100 + 'vw'; // 화면 랜덤 위치
+            span.style.animationDuration = Math.random() * 5 + 5 + 's'; // 텍스트 떨어지는 속도
+            span.style.fontSize = Math.random() * 0.5 + 'em'; // 텍스트 크기 조정 (아주 작게)
             body.appendChild(span);
         });
     </script>
