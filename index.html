@@ -28,13 +28,10 @@
             height: auto; /* 가로 세로 비율 유지 */
         }
 
-        .falling-text {
+        .falling-image {
             position: fixed;
             top: 0;
             z-index: 9999;
-            color: rgba(0, 0, 0, 0.3); /* 검정색 텍스트에 투명도 적용 (0.3) */
-            font-family: Arial, sans-serif;
-            font-size: 0.5em; /* 기본 폰트 크기 작게 설정 */
             pointer-events: none;
             animation: fall linear infinite;
         }
@@ -50,12 +47,12 @@
             }
         }
 
-        /* 다양한 크기의 텍스트를 위해 폰트 크기 조정 */
-        .falling-text:nth-child(odd) {
-            font-size: 0.8em;
+        /* 다양한 크기의 이미지를 위해 크기 조정 */
+        .falling-image:nth-child(odd) {
+            width: 30px;
         }
-        .falling-text:nth-child(even) {
-            font-size: 0.6em;
+        .falling-image:nth-child(even) {
+            width: 50px;
         }
     </style>
 </head>
@@ -65,20 +62,19 @@
     <!-- 기존 이미지 -->
     <img src="https://1drv.ms/i/s!ApO_KMRs8HgThbJgic2QPG-i-cqDWQ?embed=1&width=1080&height=1080" alt="My Image">
 
-    <!-- Falling Text Effect -->
+    <!-- Falling Image Effect -->
     <script>
-        const fallingTextArray = 'KILLNIGHT X EUROS'.repeat(5).split('');
+        const numberOfImages = 20; // 내리는 이미지 개수 설정
         const body = document.body;
 
-        fallingTextArray.forEach(() => {
-            const span = document.createElement('span');
-            span.innerHTML = 'KILLNIGHT X EUROS';
-            span.classList.add('falling-text');
-            span.style.left = Math.random() * 100 + 'vw'; // 화면 랜덤 위치
-            span.style.animationDuration = Math.random() * 5 + 5 + 's'; // 텍스트 떨어지는 속도
-            span.style.fontSize = Math.random() * 0.5 + 'em'; // 텍스트 크기 조정 (아주 작게)
-            body.appendChild(span);
-        });
+        for (let i = 0; i < numberOfImages; i++) {
+            const img = document.createElement('img');
+            img.src = 'https://1drv.ms/i/s!ApO_KMRs8HgThZlD-sDDsUwxoID_TA?embed=1&width=1200&height=1600';
+            img.classList.add('falling-image');
+            img.style.left = Math.random() * 100 + 'vw'; // 화면 랜덤 위치
+            img.style.animationDuration = Math.random() * 5 + 5 + 's'; // 이미지 떨어지는 속도
+            body.appendChild(img);
+        }
     </script>
 
     <!-- Naver Analytics Script (수정된 스크립트) -->
