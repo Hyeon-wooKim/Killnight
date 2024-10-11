@@ -17,9 +17,44 @@
     </script>
 
     <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* 스크롤 없애기 */
+            background-color: black;
+        }
+
         img {
             width: 100%; /* 화면 너비에 맞게 이미지 크기 조정 */
             height: auto; /* 가로 세로 비율 유지 */
+        }
+
+        .snowflake {
+            position: fixed;
+            top: 0;
+            z-index: 9999;
+            color: white;
+            font-size: 1em;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* 다양한 크기의 눈송이를 위해 폰트 크기 조정 */
+        .snowflake:nth-child(odd) {
+            font-size: 2em;
+        }
+        .snowflake:nth-child(even) {
+            font-size: 1.5em;
         }
     </style>
 </head>
@@ -28,6 +63,22 @@
 
     <!-- 기존 이미지 -->
     <img src="https://1drv.ms/i/s!ApO_KMRs8HgThbJgic2QPG-i-cqDWQ?embed=1&width=1080&height=1080" alt="My Image">
+
+    <!-- Snowflake Effect -->
+    <script>
+        const snowflakes = '❄️'.repeat(100).split('');
+        const body = document.body;
+
+        snowflakes.forEach((snowflake) => {
+            const span = document.createElement('span');
+            span.innerHTML = snowflake;
+            span.classList.add('snowflake');
+            span.style.left = Math.random() * 100 + 'vw';
+            span.style.animationDuration = Math.random() * 5 + 5 + 's'; // 눈송이 떨어지는 속도
+            span.style.fontSize = Math.random() * 1.5 + 'em'; // 눈송이 크기
+            body.appendChild(span);
+        });
+    </script>
 
     <!-- Naver Analytics Script (수정된 스크립트) -->
     <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
