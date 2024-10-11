@@ -32,7 +32,7 @@
             position: fixed;
             top: 0;
             z-index: 9999;
-            color: white;
+            color: rgba(0, 0, 0, 0.3); /* 검정색 텍스트에 투명도 적용 (0.3) */
             font-family: Arial, sans-serif;
             font-size: 0.5em; /* 기본 폰트 크기 작게 설정 */
             pointer-events: none;
@@ -67,7 +67,7 @@
 
     <!-- Falling Text Effect -->
     <script>
-        const fallingTextArray = 'KILLNIGHT X EUROS'.repeat(50).split('');
+        const fallingTextArray = 'KILLNIGHT X EUROS'.repeat(5).split('');
         const body = document.body;
 
         fallingTextArray.forEach(() => {
